@@ -1,12 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React, { useState, useEffect } from "react";
+import * as tf from "@tensorflow/tfjs";
+import { StyleSheet, Text, View } from "react-native";
 
 export default function App() {
+  const [tfReady, setTfReady] = useState(false);
+
+  useEffect(async () => {
+    await tf.ready();
+    setTfReady(true);
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text>TFJS ready? {tfReady ? <Text>Yes</Text> : ""}</Text>
     </View>
   );
 }
@@ -14,8 +21,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
