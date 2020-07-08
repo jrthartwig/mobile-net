@@ -13,7 +13,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>TFJS ready? {tfReady ? <Text>Yes</Text> : ""}</Text>
+      <Text>TFJS ready? {tfReady ? <Text>Si</Text> : ""}</Text>
     </View>
   );
 }
